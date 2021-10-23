@@ -1,19 +1,12 @@
 #include<stdio.h>
 #include<conio.h>
 #include<stdlib.h>
+#include<string.h>
 #include "addPatientDetails.h"
+#include "onExit.h"
 
 //global variable to assign pId's to the new patients
 int autoPId;
-
-void onExit(){
-    FILE* writeAutoPId;
-    writeAutoPId = fopen("autoPIdStatus.txt", "w");
-    fprintf(writeAutoPId, "%d", autoPId);
-    fclose(writeAutoPId);
-
-}
-
 
 int main(){
     int userChoice;
