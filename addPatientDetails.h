@@ -56,8 +56,13 @@ void addPatientDetails(){
         printf("\nEnter the patient's covid status(1-Positive 0-Negative): ");
         scanf("%d", &pat[i].pCovidStatus);
 
+        /*
         fwrite(&pat[i], sizeof(Patient), 1, patientLog);
         fwrite(&pat[i], sizeof(Patient), 1, tempLog);
+        */
+
+        fprintf(patientLog, "%d %s %d %s %d %s", pat[i].pId, pat[i].pName, pat[i].pAge, pat[i].pDiesase, pat[i].pCovidStatus, "\n");
+        fprintf(tempLog, "%d %s %d %s %d %s", pat[i].pId, pat[i].pName, pat[i].pAge, pat[i].pDiesase, pat[i].pCovidStatus, "\n");
 
         printf("\nHello %s, your Patient-ID is: %d ", pat[i].pName, pat[i].pId);
 
