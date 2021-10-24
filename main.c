@@ -3,8 +3,8 @@
 #include<stdlib.h>
 #include<string.h>
 #include "addPatientDetails.h"
-//#include "permanentCountOfPatients.h"
-//#include "temporaryCountOfPatients.h"
+#include "permanentCountOfPatients.h"
+#include "temporaryCountOfPatients.h"
 #include "clearTempRecords.h"
 #include "onExit.h"
 
@@ -60,10 +60,10 @@ int main(){
 
                     switch(dataAnalystChoice){
                         case 1:
-                            //displayNumberOfRecords();
+                            displayNumberOfRecords();
                         break;
                         case 2:
-                            //displayTemporaryNumberOfRecords();
+                            displayTemporaryNumberOfRecords();
                         break;
                         case 3:
                         break;
