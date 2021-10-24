@@ -12,16 +12,23 @@ typedef struct Patients{
 
 //void numberOfActivePatients();
 //void displayPatientDetails();
-
+int displayTemporaryNumberOfRecords();
 extern int autoPId; 
 
 void addPatientDetails(){
-
+    int tempVar = displayTemporaryNumberOfRecords();
+    
+    if(tempVar > 2){
+        printf("Hospital is Overcrowded, Sorry for the inconvinience!");
+        return;
+    }
+    /*
     FILE* readAutoPId;
     readAutoPId = fopen("autoPIdStatus.txt", "r");
     fscanf(readAutoPId, "%d", &autoPId);
     //printf("%d", autoPId);
     fclose(readAutoPId);
+    */
 
     int numberOfPatients;
     printf("Enter the total number of patients: "); //do update the printf statement in original project
