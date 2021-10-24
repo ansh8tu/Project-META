@@ -20,7 +20,7 @@ void addPatientDetails(){
     FILE* readAutoPId;
     readAutoPId = fopen("autoPIdStatus.txt", "r");
     fscanf(readAutoPId, "%d", &autoPId);
-    printf("%d", autoPId);
+    //printf("%d", autoPId);
     fclose(readAutoPId);
 
     int numberOfPatients;
@@ -64,10 +64,10 @@ void addPatientDetails(){
         fprintf(patientLog, "%d %s %d %s %d %s", pat[i].pId, pat[i].pName, pat[i].pAge, pat[i].pDiesase, pat[i].pCovidStatus, "\n");
         fprintf(tempLog, "%d %s %d %s %d %s", pat[i].pId, pat[i].pName, pat[i].pAge, pat[i].pDiesase, pat[i].pCovidStatus, "\n");
 
-        printf("\nHello %s, your Patient-ID is: %d ", pat[i].pName, pat[i].pId);
+        printf("\nHello %s, your Patient-ID is: %d \n", pat[i].pName, pat[i].pId);
 
         if((strcmp(pat[i].pDiesase, "Headache") == 0)  || (strcmp(pat[i].pDiesase, "headache") == 0)){
-            printf("\nPlease refer to %s specialist in Ward 101", pat[i].pDiesase);
+            printf("\nPlease refer to %s specialist in Ward 101\n", pat[i].pDiesase);
         }
         
     }
