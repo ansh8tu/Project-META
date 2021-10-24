@@ -13,6 +13,12 @@ int autoPId;
 
 int main(){
 
+    FILE* readAutoPId;
+    readAutoPId = fopen("autoPIdStatus.txt", "r");
+    fscanf(readAutoPId, "%d", &autoPId);
+    //printf("%d", autoPId);
+    fclose(readAutoPId);
+
     int userChoice;
     int patientChoice;
     int dataAnalystChoice;

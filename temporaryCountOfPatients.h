@@ -3,7 +3,7 @@
 
 extern int autoPId; 
 
-void displayTemporaryNumberOfRecords(){
+int displayTemporaryNumberOfRecords(){
     int patientCount = 0;
     char ch = 'a';
     FILE* tempLog;
@@ -19,6 +19,7 @@ void displayTemporaryNumberOfRecords(){
 
     printf("\nThe number of patients currently in Hospital: %d \n", patientCount);
     
+    return patientCount;
 }
 
 #endif
