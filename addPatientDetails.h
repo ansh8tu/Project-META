@@ -10,15 +10,14 @@ typedef struct Patients{
 
 } Patient;
 
-//void numberOfActivePatients();
-//void displayPatientDetails();
 int displayTemporaryNumberOfRecords();
+
 extern int autoPId; 
 
 void addPatientDetails(){
     int tempVar = displayTemporaryNumberOfRecords();
     
-    if(tempVar > 2){
+    if(tempVar >= 6){
         printf("Hospital is Overcrowded, Sorry for the inconvinience!");
         return;
     }
@@ -34,6 +33,8 @@ void addPatientDetails(){
     printf("Enter the number of patients to add: "); //do update the printf statement in original project
     scanf("%d", &numberOfPatients);
 
+    
+
     Patient* pat;
     pat = (Patient*)calloc(numberOfPatients, sizeof(Patient));
 
@@ -43,6 +44,7 @@ void addPatientDetails(){
     patientLog = fopen("HospitalRecord.txt", "a");
     tempLog = fopen("TemporaryRecord.txt", "a");
 
+    fflush(stdin);
     int previousEntry = autoPId - 1000; 
     int i;
     for(i=previousEntry; i<numberOfPatients + previousEntry; i++){
@@ -57,6 +59,7 @@ void addPatientDetails(){
         printf("\nEnter the patient's age: ");
         scanf("%d", &pat[i].pAge);
 
+        fflush(stdin);
         printf("\nEnter the patient's disease: ");
         scanf("%s", pat[i].pDiesase);
 
