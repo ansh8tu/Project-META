@@ -2,10 +2,11 @@
 #include<conio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<time.h>
 #include "addPatientDetails.h"
 #include "permanentCountOfPatients.h"
 #include "temporaryCountOfPatients.h"
-#include "clearTempRecords.h"
+#include "deletePatientRecord.h"
 #include "onExit.h"
 
 //global variable to assign pId's to the new patients
@@ -13,17 +14,28 @@ int autoPId;
 
 int main(){
 
+    //opening the autoPId file to get the last entry 
     FILE* readAutoPId;
     readAutoPId = fopen("autoPIdStatus.txt", "r");
     fscanf(readAutoPId, "%d", &autoPId);
-    //printf("%d", autoPId);
     fclose(readAutoPId);
 
+    //storing variables for switch-cases
     int userChoice;
     int patientChoice;
     int dataAnalystChoice;
+    int dischargePId;
+
+    //to display the time functionality
+    time_t storeCurrentTime;
+    struct tm * currentTime;
+    
 
     do{
+        time ( &storeCurrentTime );
+        currentTime = localtime ( &storeCurrentTime );
+        printf ( "\n%s", asctime (currentTime) );
+
         printf("\n1. Login as Patient");
         printf("\n2. Login as Data Analyst");
         printf("\n3. Exit");
@@ -35,8 +47,13 @@ int main(){
         switch(userChoice){
             case 1: 
                 do{
+                    time ( &storeCurrentTime );
+                    currentTime = localtime( &storeCurrentTime );
+                    printf ( "\n%s", asctime(currentTime) );
+
                     printf("\n1. Add Patient Entry");
-                    printf("\n2. Return to Main Screen");
+                    printf("\n2. Discharge Patient");
+                    printf("\n3. Return to Main Screen");
 
                     printf("\n\n=>Enter your choice: ");
                     scanf("%d", &patientChoice);
@@ -47,15 +64,25 @@ int main(){
                             addPatientDetails();
                         break;
                         case 2:
+                            printf("\nEnter the P-ID of Patient that you want to discharge: ");
+                            scanf("%d", &dischargePId);
+                            deleteRecordFromTemporaryFile(dischargePId);
+                        break;
+                        break;
+                        case 3:
                             onExit();
                         break;
                     }
 
-                }while(patientChoice != 2);
+                }while(patientChoice != 3);
             break;
 
             case 2:
                 do{
+                    time ( &storeCurrentTime );
+                    currentTime = localtime( &storeCurrentTime );
+                    printf ( "\n%s", asctime(currentTime) );
+
                     printf("\n1. Display Permanent Count of Patients");
                     printf("\n2. Display Temporary Count of Patients");
                     printf("\n3. Return to Main Screen");
@@ -80,7 +107,6 @@ int main(){
 
             case 3:
                 printf("\nThank you for your visit!\n\n");
-                clearTemporaryRecords();
             break;
         }
 
