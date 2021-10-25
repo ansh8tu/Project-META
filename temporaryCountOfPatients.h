@@ -18,6 +18,7 @@ int displayTemporaryNumberOfRecords(){
     }
 
     printf("\nThe number of patients currently in Hospital: %d \n", patientCount);
+    fclose(tempLog);
     
     return patientCount;
 }

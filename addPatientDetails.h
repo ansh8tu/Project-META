@@ -31,7 +31,7 @@ void addPatientDetails(){
     */
 
     int numberOfPatients;
-    printf("Enter the total number of patients: "); //do update the printf statement in original project
+    printf("Enter the number of patients to add: "); //do update the printf statement in original project
     scanf("%d", &numberOfPatients);
 
     Patient* pat;
