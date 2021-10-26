@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include<time.h>
 #include "addPatientDetails.h"
 #include "permanentCountOfPatients.h"
 #include "temporaryCountOfPatients.h"
@@ -9,7 +8,7 @@
 #include "onExit.h"
 
 //global variable to assign pId's to the new patients
-int autoPId;
+extern int autoPId = 0;
 
 int main(){
 
@@ -24,21 +23,9 @@ int main(){
     int patientChoice;
     int dataAnalystChoice;
     int dischargePId;
-
     
-    //to display the time functionality
-    time_t storeCurrentTime;
-    struct tm * currentTime;
-    
-    
-
     do{
         
-        time ( &storeCurrentTime );
-        currentTime = localtime ( &storeCurrentTime );
-        printf ( "\n%s", asctime (currentTime) );
-        
-
         printf("\n1. Login as Patient");
         printf("\n2. Login as Data Analyst");
         printf("\n3. Exit");
@@ -50,12 +37,7 @@ int main(){
         switch(userChoice){
             case 1: 
                 do{
-                
-                    time ( &storeCurrentTime );
-                    currentTime = localtime( &storeCurrentTime );
-                    printf ( "\n%s", asctime(currentTime) );
                     
-
                     printf("\n1. Add Patient Entry");
                     printf("\n2. Discharge Patient");
                     printf("\n3. Return to Main Screen");
@@ -83,11 +65,6 @@ int main(){
 
             case 2:
                 do{
-                    
-                    time ( &storeCurrentTime );
-                    currentTime = localtime( &storeCurrentTime );
-                    printf ( "\n%s", asctime(currentTime) );
-                    
 
                     printf("\n1. Display Permanent Count of Patients");
                     printf("\n2. Display Temporary Count of Patients");
