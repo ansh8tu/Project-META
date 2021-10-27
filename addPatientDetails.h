@@ -15,13 +15,21 @@ int displayTemporaryNumberOfRecords();
 int autoPId; 
 
 void addPatientDetails(){
-    int tempVar = displayTemporaryNumberOfRecords();
     
-    if(tempVar >= 12){
+    int tempVar = displayTemporaryNumberOfRecords();
+
+    int numberOfPatients;
+    printf("Enter the number of patients to add: "); //do update the printf statement in original project
+    scanf("%d", &numberOfPatients);
+    fflush(stdin);
+    
+    //Fixed by Ansh on 13th Oct 2021 - 00:16
+    if(tempVar + numberOfPatients >= 3){
         printf("Hospital is Overcrowded, Sorry for the inconvinience!");
+        printf("\n");
+        printf("Max Patients allowed to enter: %d", (3 - tempVar));
         return;
     }
-
     /*
     FILE* readAutoPId;
     readAutoPId = fopen("autoPIdStatus.txt", "r");
@@ -30,10 +38,7 @@ void addPatientDetails(){
     fclose(readAutoPId);
     */
 
-    int numberOfPatients;
-    printf("Enter the number of patients to add: "); //do update the printf statement in original project
-    scanf("%d", &numberOfPatients);
-    fflush(stdin);
+    
 
     Patient* pat = (Patient*)calloc(numberOfPatients, sizeof(Patient));
 
@@ -83,6 +88,8 @@ void addPatientDetails(){
             printf("\nPlease refer to %s specialist in Ward 101\n", pat[i].pDiesase);
         }
         */
+
+       
         
     }
 
