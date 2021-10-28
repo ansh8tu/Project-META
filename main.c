@@ -26,7 +26,7 @@ int main(){
     
     do{
         
-        printf("\n1. Login as Patient");
+        printf("\n1. Login as Receptionist");
         printf("\n2. Login as Data Analyst");
         printf("\n3. Exit");
 
