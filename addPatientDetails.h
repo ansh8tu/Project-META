@@ -3,7 +3,8 @@
 
 typedef struct Patients{
     int pId;
-    char pName[30];
+    char pFirstName[30];
+    char pLastName[30];
     int pAge;
     char pDiesase[30];
     int pCovidStatus;
@@ -23,22 +24,15 @@ void addPatientDetails(){
     scanf("%d", &numberOfPatients);
     fflush(stdin);
     
-    //Fixed by Ansh on 13th Oct 2021 - 00:16
-    if(tempVar + numberOfPatients >= 3){
+    int capacityOfHospital = 8;
+
+    if(tempVar + numberOfPatients >= capacityOfHospital){
         printf("Hospital is Overcrowded, Sorry for the inconvinience!");
         printf("\n");
-        printf("Max Patients allowed to enter: %d", (3 - tempVar));
+        printf("Max Patients allowed to enter: %d", (capacityOfHospital - tempVar));
         return;
     }
-    /*
-    FILE* readAutoPId;
-    readAutoPId = fopen("autoPIdStatus.txt", "r");
-    fscanf(readAutoPId, "%d", &autoPId);
-    //printf("%d", autoPId);
-    fclose(readAutoPId);
-    */
-
-    
+  
 
     Patient* pat = (Patient*)calloc(numberOfPatients, sizeof(Patient));
 
@@ -56,8 +50,12 @@ void addPatientDetails(){
         pat[i - previousEntry].pId = autoPId;
         autoPId++;
 
-        printf("\nEnter the patient's name: ");
-        scanf("%s", pat[i - previousEntry].pName);
+        printf("\nEnter the patient's first name: ");
+        scanf("%s", pat[i - previousEntry].pFirstName);
+
+        fflush(stdin);
+        printf("\nEnter the patient's last name: ");
+        scanf("%s", pat[i - previousEntry].pLastName);
 
         fflush(stdin);
         printf("\nEnter the patient's age: ");
@@ -78,10 +76,10 @@ void addPatientDetails(){
         fwrite(&pat[i], sizeof(Patient), 1, tempLog);
         */
 
-        fprintf(patientLog, "%d %s %d %s %d %s", pat[i - previousEntry].pId, pat[i - previousEntry].pName, pat[i - previousEntry].pAge, pat[i - previousEntry].pDiesase, pat[i - previousEntry].pCovidStatus, "\n");
-        fprintf(tempLog, "%d %s %d %s %d %s", pat[i - previousEntry].pId, pat[i - previousEntry].pName, pat[i - previousEntry].pAge, pat[i - previousEntry].pDiesase, pat[i - previousEntry].pCovidStatus, "\n");
+        fprintf(patientLog, "%d %s %s %d %s %d %s", pat[i - previousEntry].pId, pat[i - previousEntry].pFirstName, pat[i - previousEntry].pLastName, pat[i - previousEntry].pAge, pat[i - previousEntry].pDiesase, pat[i - previousEntry].pCovidStatus, "\n");
+        fprintf(tempLog, "%d %s %s %d %s %d %s", pat[i - previousEntry].pId, pat[i - previousEntry].pFirstName, pat[i - previousEntry].pLastName, pat[i - previousEntry].pAge, pat[i - previousEntry].pDiesase, pat[i - previousEntry].pCovidStatus, "\n");
 
-        printf("\nHello %s, your Patient-ID is: %d \n", pat[i - previousEntry].pName, pat[i - previousEntry].pId);
+        printf("\nHello %s %s, your Patient-ID is: %d \n", pat[i - previousEntry].pFirstName, pat[i - previousEntry].pLastName, pat[i - previousEntry].pId);
 
         /*
         if((strcmp(pat[i].pDiesase, "Headache") == 0)  || (strcmp(pat[i].pDiesase, "headache") == 0)){
