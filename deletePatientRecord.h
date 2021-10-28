@@ -4,6 +4,7 @@
 void deleteRecordFromTemporaryFile(int pId){
     char ch = 'a';
     int i=0;
+    int flag = 0;
     char storePId[4];
 
     FILE* tempLog;
@@ -29,9 +30,23 @@ void deleteRecordFromTemporaryFile(int pId){
             int j;
             sscanf(storePId, "%d", &j);
             if(j == pId){
-                line = j - 1000;
+                flag = 1;
+                break;
             }
+            line++;
         }
+    }
+
+    //if patient-id is not found in records 
+    if(flag == 0){
+        printf("\n");
+        printf("Sorry P-ID: %d, doesn't exist!", pId);
+        printf("\n");
+    }
+    else{
+        printf("\n");
+        printf("P-Id: %d has been successfully discharged from the hospital!", pId);
+        printf("\n");
     }
 
     while ((ch=fgetc(tempLog1))!=EOF){
@@ -39,7 +54,7 @@ void deleteRecordFromTemporaryFile(int pId){
             putc(ch, dummyFile);
         }
         if (ch == '\n'){
-            temp++;
+                temp++;
         }
     }
 
