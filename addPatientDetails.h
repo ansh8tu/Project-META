@@ -12,6 +12,7 @@ typedef struct Patients{
 } Patient;
 
 int displayTemporaryNumberOfRecords();
+int flag = 0;
 
 int autoPId; 
 
@@ -62,7 +63,7 @@ void addPatientDetails(){
         scanf("%d", &pat[i - previousEntry].pAge);
 
         fflush(stdin);
-        printf("\nEnter the patient's disease: ");
+        printf("\nEnter the patient's disease/Symptoms: ");
         scanf("%s", pat[i - previousEntry].pDiesase);
 
         fflush(stdin);
@@ -71,24 +72,22 @@ void addPatientDetails(){
         
         fflush(stdin);
 
-        /*
-        fwrite(&pat[i], sizeof(Patient), 1, patientLog);
-        fwrite(&pat[i], sizeof(Patient), 1, tempLog);
-        */
-
         fprintf(patientLog, "%d %s %s %d %s %d %s", pat[i - previousEntry].pId, pat[i - previousEntry].pFirstName, pat[i - previousEntry].pLastName, pat[i - previousEntry].pAge, pat[i - previousEntry].pDiesase, pat[i - previousEntry].pCovidStatus, "\n");
         fprintf(tempLog, "%d %s %s %d %s %d %s", pat[i - previousEntry].pId, pat[i - previousEntry].pFirstName, pat[i - previousEntry].pLastName, pat[i - previousEntry].pAge, pat[i - previousEntry].pDiesase, pat[i - previousEntry].pCovidStatus, "\n");
 
         printf("\nHello %s %s, your Patient-ID is: %d \n", pat[i - previousEntry].pFirstName, pat[i - previousEntry].pLastName, pat[i - previousEntry].pId);
 
-        /*
-        if((strcmp(pat[i].pDiesase, "Headache") == 0)  || (strcmp(pat[i].pDiesase, "headache") == 0)){
-            printf("\nPlease refer to %s specialist in Ward 101\n", pat[i].pDiesase);
-        }
-        */
 
-       
-        
+        if((strcmp(pat[i - previousEntry].pDiesase, "Cold") == 0) || (strcmp(pat[i - previousEntry].pDiesase, "Cough") == 0) || (strcmp(pat[i - previousEntry].pDiesase, "Diarrhea") == 0)){
+            printf("\nPlease refer to %s specialist in Ward-101\n", pat[i - previousEntry].pDiesase);
+        }else if(strcmp(pat[i - previousEntry].pDiesase, "Fatigue") == 0 || strcmp(pat[i - previousEntry].pDiesase, "Fever") == 0 || strcmp(pat[i - previousEntry].pDiesase, "Headache") == 0){
+            printf("\nPlease refer to %s specialist in Ward-102\n", pat[i - previousEntry].pDiesase);   
+        }else if(strcmp(pat[i - previousEntry].pDiesase, "Nausea") == 0 || strcmp(pat[i - previousEntry].pDiesase, "SoreThroat") == 0 || strcmp(pat[i - previousEntry].pDiesase, "Tastelessness") == 0){
+            printf("\nPlease refer to %s specialist in Ward-103\n", pat[i - previousEntry].pDiesase);
+        }else{
+            printf("\nPlease refer to General Ward!\n");
+        }
+            
     }
 
     FILE* writeAutoPId;
