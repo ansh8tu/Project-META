@@ -6,10 +6,12 @@
 #include "permanentCountOfPatients.h"
 #include "temporaryCountOfPatients.h"
 #include "deletePatientRecord.h"
+#include "displayPatientDetails.h"
+//#include "updatePatientDetails.h"
 #include "onExit.h"
 
 //global variable to assign pId's to the new patients
-extern int autoPId = 0;
+extern int autoPId;
 
 int main(){
 
@@ -24,9 +26,11 @@ int main(){
     int patientChoice;
     int dataAnalystChoice;
     int dischargePId;
+    int displayDetailsPId;
+    int updateDetailsPId;
     int passwordAuthForReceptionist, passwordAuthForDataAnalyst;
     char passwordForReceptionist[20], passwordForDataAnalyst[20];
-    char passwordCheckForReceptionist[14] = "passwordrecep", passwordCheckForDataAnalyst[13] = "passworddata";
+    char passwordCheckForReceptionist[14] = "ab", passwordCheckForDataAnalyst[13] = "ab";
     char psForR, psForDA;
     int numberOfAttemptsForReceptionist = 0, numberOfAttemptsForDataAnalyst = 0;
 
@@ -74,7 +78,9 @@ int main(){
                         printf("\n");
                         printf("\n1. Add Patient Entry");
                         printf("\n2. Discharge Patient");
-                        printf("\n3. Return to Main Screen");
+                        printf("\n3. Display Patient Details");
+                        printf("\n4. Update Patient Details");
+                        printf("\n5. Return to Main Screen");
 
                         printf("\n\n=>Enter your choice: ");
                         scanf("%d", &patientChoice);
@@ -90,6 +96,16 @@ int main(){
                                 deleteRecordFromTemporaryFile(dischargePId);
                             break;
                             case 3:
+                                printf("\nEnter the P-ID of Patient that you want to display details for: ");
+                                scanf("%d", &displayDetailsPId);
+                                displayRecordForPatient(displayDetailsPId);
+                            break;
+                            case 4:
+                                //printf("\nEnter the P-ID of Patient that you want to update details for: ");
+                                //scanf("%d", &updateDetailsPId);
+                                //updateRecordForPatient(updateDetailsPId);
+                            break;
+                            case 5:
                                 onExit();
                             break;
                         }
@@ -98,7 +114,7 @@ int main(){
                         numberOfAttemptsForReceptionist = 0;
                         break;
                     }
-                }while(patientChoice != 3 );
+                }while(patientChoice != 5 );
             break;
 
             case 2:
