@@ -7,7 +7,7 @@
 #include "temporaryCountOfPatients.h"
 #include "deletePatientRecord.h"
 #include "displayPatientDetails.h"
-//#include "updatePatientDetails.h"
+#include "updatePatientDetails.h"
 #include "onExit.h"
 
 //global variable to assign pId's to the new patients
@@ -101,9 +101,9 @@ int main(){
                                 displayRecordForPatient(displayDetailsPId);
                             break;
                             case 4:
-                                //printf("\nEnter the P-ID of Patient that you want to update details for: ");
-                                //scanf("%d", &updateDetailsPId);
-                                //updateRecordForPatient(updateDetailsPId);
+                                printf("\nEnter the P-ID of Patient that you want to update details for: ");
+                                scanf("%d", &updateDetailsPId);
+                                updateRecordForPatient(updateDetailsPId);
                             break;
                             case 5:
                                 onExit();
