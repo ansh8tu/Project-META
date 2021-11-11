@@ -36,19 +36,20 @@ int main(){
 
     do{
         
-        printf("\n1. Login as Receptionist");
-        printf("\n2. Login as Data Analyst");
-        printf("\n3. Exit");
+        printf("\n\t\t====================================");
+        printf("\n\t\t||  Login as Receptionist  >>  1  ||");
+        printf("\n\t\t||  Login as Data Analyst  >>  2  ||");
+        printf("\n\t\t||  Exit                   >>  3  ||");
+        printf("\n\t\t====================================");
 
-        printf("\n\n=> Enter your choice: ");
+        printf("\n\n\nEnter your choice: ");
         scanf("%d", &userChoice);
-        printf("\n");
 
         switch(userChoice){
             case 1: 
                 do{
                     do{
-                        printf("\nEnter Password: ");
+                       printf("\n\nEnter Password : ");
                         int i=0;
                         while((psForR = _getch()) != 13){
                             passwordForReceptionist[i] = psForR;
@@ -74,15 +75,17 @@ int main(){
                     }while(passwordAuthForReceptionist == 0 && numberOfAttemptsForReceptionist < 3);
                     
                     if(passwordAuthForReceptionist ==1){
-                        printf("\n\nHello, Receptionist!");
-                        printf("\n");
-                        printf("\n1. Add Patient Entry");
-                        printf("\n2. Discharge Patient");
-                        printf("\n3. Display Patient Details");
-                        printf("\n4. Update Patient Details");
-                        printf("\n5. Return to Main Screen");
+                        printf("\n\n\t\tHello, Receptionist!\n");
+                        printf("\n\t\t========================================");
+                        printf("\n\t\t||  Add Patient Entry         >>   1  ||");
+                        printf("\n\t\t||  Discharge Patient         >>   2  ||");
+                        printf("\n\t\t||  Display Patient Details   >>   3  ||");
+                        printf("\n\t\t||  Update Patient Details    >>   4  ||");
+                        printf("\n\t\t||  Return to Main Screen     >>   5  ||");
+                        printf("\n\t\t========================================");
 
-                        printf("\n\n=>Enter your choice: ");
+                        printf("\n\n\nEnter your choice : ");
+
                         scanf("%d", &patientChoice);
                         printf("\n");
 
@@ -91,17 +94,17 @@ int main(){
                                 addPatientDetails();
                             break;
                             case 2:
-                                printf("\nEnter the P-ID of Patient that you want to discharge: ");
+                                printf("\nEnter the P-ID of Patient that you want to discharge : ");
                                 scanf("%d", &dischargePId);
                                 deleteRecordFromTemporaryFile(dischargePId);
                             break;
                             case 3:
-                                printf("\nEnter the P-ID of Patient that you want to display details for: ");
+                                printf("\nEnter the P-ID of Patient that you want to display details for : ");
                                 scanf("%d", &displayDetailsPId);
                                 displayRecordForPatient(displayDetailsPId);
                             break;
                             case 4:
-                                printf("\nEnter the P-ID of Patient that you want to update details for: ");
+                                printf("\nEnter the P-ID of Patient that you want to update details for : ");
                                 scanf("%d", &updateDetailsPId);
                                 updateRecordForPatient(updateDetailsPId);
                             break;
@@ -120,7 +123,7 @@ int main(){
             case 2:
                 do{
                     do{
-                        printf("\nEnter Password: ");
+                        printf("\n\nEnter Password : ");
                         int i=0;
                         while((psForDA = _getch()) != 13){
                             passwordForDataAnalyst[i] = psForDA;
@@ -146,13 +149,14 @@ int main(){
                     }while(passwordAuthForDataAnalyst == 0 && numberOfAttemptsForDataAnalyst < 3);
 
                     if(passwordAuthForDataAnalyst ==1){
-                        printf("\n\nHello, Data Analyst!");
-                        printf("\n");
-                        printf("\n1. Permanent Count of Patients");
-                        printf("\n2. Temporary Count of Patients");
-                        printf("\n3. Return to Main Screen");
+                        printf("\n\n\t\tHello, Data Analyst!\n");
+                        printf("\n\t\t============================================");
+                        printf("\n\t\t||  Permanent Count of Patients   >>   1  ||");
+                        printf("\n\t\t||  Temporary Count of Patients   >>   2  ||");
+                        printf("\n\t\t||  Return to Main Screen         >>   3  ||");
+                        printf("\n\t\t============================================");
 
-                        printf("\n\n=>Enter your choice: ");
+                        printf("\n\nEnter your choice : ");
                         scanf("%d", &dataAnalystChoice);
                         printf("\n");
 

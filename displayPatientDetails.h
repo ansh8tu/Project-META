@@ -46,7 +46,7 @@ void displayRecordForPatient(int pId){
         }
     }
 
-    //if patient-id is not found in records 
+    //if patient-id is not found in records
     int varForSpaces = 1;
     if(flag == 0){
         printf("\n");
@@ -54,30 +54,30 @@ void displayRecordForPatient(int pId){
         printf("\n");
     }
     else{
-        printf("\n");
-        printf("\nP-ID: ");
-        for(int i=0; i<strlen(storeLine)-1; i++){
+        printf("\n\t--------------------------------------------");
+        printf("\n\n\t\tP-ID: ");
+        for(int i=0; i<=it; i++){
             if(storeLine[i] == ' ' && varForSpaces == 1){
                 varForSpaces++;
-                printf("\nFirst Name: ");
+                printf("\n\t\tFirst Name: ");
             }else if(storeLine[i] == ' ' && varForSpaces == 2){
                 varForSpaces++;
-                printf("\nLast Name: ");
+                printf("\n\t\tLast Name: ");
             }else if(storeLine[i] == ' ' && varForSpaces == 3){
                 varForSpaces++;
-                printf("\nAge: ");
+                printf("\n\t\tAge: ");
             }else if(storeLine[i] == ' ' && varForSpaces == 4){
                 varForSpaces++;
-                printf("\nDisease: ");
+                printf("\n\t\tDisease: ");
             }else if(storeLine[i] == ' ' && varForSpaces == 5){
                 varForSpaces++;
-                printf("\nCovid-Status: ");
+                printf("\n\t\tCovid-Status: ");
             }else{
                 printf("%c", storeLine[i]);
             }
         }
-        printf("\n");
-        printf("P-Id: %d details has been successfully displayed!", pId);
+        printf("\n\t--------------------------------------------");
+        printf("\n\nP-Id: %d details has been successfully displayed!", pId);
         printf("\n");
     }
 

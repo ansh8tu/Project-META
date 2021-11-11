@@ -93,24 +93,24 @@ void updateRecordForPatient(int pId){
     char pDiesaseUpdated[30];
     int pCovidStatusUpdated;
 
-    printf("\n");
-    printf("\n\nEnter the patient's first name : ");
+    printf("\n\n///////////////////////////////// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ ");   
+    printf("\n\n Enter the patient's first name : ");
     scanf("%s", pFirstNameUpdated);
 
     fflush(stdin);
-    printf("\nEnter the patient's last name : ");
+    printf("\n Enter the patient's last name : ");
     scanf("%s", pLastNameUpdated);
 
     fflush(stdin);
-    printf("\nEnter the patient's age : ");
+    printf("\n Enter the patient's age : ");
     scanf("%d", &pAgeUpdated);
 
     fflush(stdin);
-    printf("\nEnter the patient's disease/Symptoms : ");
+    printf("\n Enter the patient's disease/Symptoms : ");
     scanf("%s", pDiesaseUpdated);
 
     fflush(stdin);
-    printf("\nEnter the patient's covid status(1-Positive 0-Negative) : ");
+    printf("\n Enter the patient's covid status(1-Positive 0-Negative) : ");
     scanf("%d", &pCovidStatusUpdated);
 
     printf("\n");
@@ -130,7 +130,7 @@ void updateRecordForPatient(int pId){
 
     if (flag!=0){
         printf("\n");
-        printf("P-Id: %d details has been successfully updated in Active Patient Record!!", pId);
+        printf(" P-Id: %d details has been successfully updated in Active Patient Record!!", pId);
         printf("\n");
     }
     
@@ -160,7 +160,7 @@ void updateRecordForPatient(int pId){
     //for hospital record   
     if(flag2!=0){
         printf("\n");
-        printf("P-Id: %d details has been successfully updated in Hospital Record!!", pId);
+        printf(" P-Id: %d details has been successfully updated in Hospital Record!!", pId);
         printf("\n");
     }
     
@@ -180,6 +180,8 @@ void updateRecordForPatient(int pId){
         }
     }
 
+    printf("\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ ///////////////////////////////// \n");
+       
     fclose(tempLog12);
     fclose(dummyFile2);
     remove("HospitalRecord.txt");
