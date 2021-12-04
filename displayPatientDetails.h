@@ -1,7 +1,7 @@
 #ifndef DISPLAYPATIENTDEILS_H
 #define DISPLAYPATIENTDEILS_H
 
-void displayRecordForPatient(int pId){
+void displayRecordForPatient(int pId,int flag1){
     char ch = 'a';
     int i=0;
     int flag = 0;
@@ -10,8 +10,17 @@ void displayRecordForPatient(int pId){
 
     FILE* tempLog;
     FILE* tempLog1;
-    tempLog = fopen("HospitalRecord.txt","r");
-    tempLog1 = fopen("HospitalRecord.txt","r");
+
+    // Enter 0 to search in hospital record
+    // Enter 1 to search in temporary record
+    if (flag1==0){
+       tempLog = fopen("HospitalRecord.txt","r");
+       tempLog1 = fopen("HospitalRecord.txt","r");
+    }
+    else{
+        tempLog = fopen("TemporaryRecord.txt","r");
+        tempLog1 = fopen("TemporaryRecord.txt","r");
+    }  
 
     int j = 0;
     int line = 0;

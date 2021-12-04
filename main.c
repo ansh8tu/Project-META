@@ -9,6 +9,7 @@
 #include "displayPatientDetails.h"
 #include "updatePatientDetails.h"
 #include "onExit.h"
+#include "activeCountOfCovidCases.h"
 
 //global variable to assign pId's to the new patients
 extern int autoPId;
@@ -101,7 +102,7 @@ int main(){
                             case 3:
                                 printf("\nEnter the P-ID of Patient that you want to display details for : ");
                                 scanf("%d", &displayDetailsPId);
-                                displayRecordForPatient(displayDetailsPId);
+                                displayRecordForPatient(displayDetailsPId,0);
                             break;
                             case 4:
                                 printf("\nEnter the P-ID of Patient that you want to update details for : ");
@@ -150,15 +151,19 @@ int main(){
 
                     if(passwordAuthForDataAnalyst ==1){
                         printf("\n\n\t\tHello, Data Analyst!\n");
-                        printf("\n\t\t============================================");
-                        printf("\n\t\t||  Permanent Count of Patients   >>   1  ||");
-                        printf("\n\t\t||  Temporary Count of Patients   >>   2  ||");
-                        printf("\n\t\t||  Return to Main Screen         >>   3  ||");
-                        printf("\n\t\t============================================");
+                        printf("\n\t\t=================================================================");
+                        printf("\n\t\t||  Permanent Count of Patients                        >>   1  ||");
+                        printf("\n\t\t||  Temporary Count of Patients                        >>   2  ||");
+                        printf("\n\t\t||  Search Patient details in hospital records         >>   3  ||");
+                        printf("\n\t\t||  Search Patient details in active patient records   >>   4  ||");
+                        printf("\n\t\t||  Active count of covid cases                        >>   5  ||");
+                        printf("\n\t\t||  Return to Main Screen                              >>   6  ||");
+                        printf("\n\t\t=================================================================");
 
                         printf("\n\nEnter your choice : ");
                         scanf("%d", &dataAnalystChoice);
                         printf("\n");
+                        int searchPId;
 
                         switch(dataAnalystChoice){
                             case 1:
@@ -168,6 +173,19 @@ int main(){
                                 displayTemporaryNumberOfRecords();
                             break;
                             case 3:
+                                printf("\nEnter the P-ID of Patient that you want to search the details for in hospital record : ");
+                                scanf("%d", &searchPId);
+                                displayRecordForPatient(searchPId,0);
+                            break;
+                            case 4:
+                                printf("\nEnter the P-ID of Patient that you want to search the details for in temporary record : ");
+                                scanf("%d", &searchPId);
+                                displayRecordForPatient(searchPId,1);
+                                break;
+                            case 5:
+                                activeCountOfCovidPatients();
+                            break;
+                            case 6:
                             break;
                         }
                     }
@@ -175,7 +193,7 @@ int main(){
                         numberOfAttemptsForDataAnalyst = 0;
                         break;
                     }
-                }while(dataAnalystChoice != 3);
+                }while(dataAnalystChoice != 6);
             break;
 
             case 3:
